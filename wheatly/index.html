@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wheatly</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
+
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+        }
+
+        .header {
+            height: 100%;
+            height: 100vh;
+            transition: background-image 1.5s;
+            background: url('./bg-blur.jpg') center center no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 0;
+            padding-top: 10rem;
+            text-align: center;
+        }
+
+        .tagline {
+            text-align: center;
+            color: #F8F8F8;
+            font-size: 4rem;
+        }
+
+        .text {
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .type {
+            font-weight: bold;
+        }
+
+        .cursor {
+            animation: flash 0.8s infinite;
+        }
+
+        @keyframes flash {
+          from {
+            opacity: 1;
+          }
+
+          to {
+            opacity: 0;
+          }
+        }
+
+        .search {
+            font-size: 2.2rem;
+            color: #F8F8F8;
+            max-width: 70rem;
+            margin: 0 auto;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .btn {
+            border: 2px solid #F8F8F8;
+            padding: 2rem;
+            color: #F8F8F8;
+            font-size: 1.4rem;
+            width: auto;
+            display: inline-block;
+            margin: 3rem auto 0;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #F8F8F8;
+            color: #100F0E;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="./logo.svg" width="400">
+        </div>
+
+        <p class="text tagline">
+            Eat <span class="type">GLUTEN</span><span class="cursor">|</span> free
+        </p>
+
+        <p class="search">I am in the mood for <strong>Italian</strong> in <strong>Manchester, UK</strong>. I can’t eat <strong>Gluten or Dairy</strong>.</p>
+
+        <div class="btn">
+            Find me somewhere to eat
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.querySelector('.header').style.backgroundImage = 'url(\'./bg.jpg\')';
+        });
+    </script>
+
+    <script>
+        var allergies = ['GLUTEN', 'DAIRY', 'MEAT', 'CARB'];
+        var delay = 200;
+        var type = document.querySelector('.type');
+
+        function changeAllergy() {
+            var allergy = allergies.pop();
+            allergies.unshift(allergy);
+            var letters = allergy.split('');
+            var written = '';
+
+            setTimeout(changeAllergy, ((allergy.length * 2) + 1) * delay);
+
+            letters.forEach(function addLetters(letter, i) {
+                setTimeout(function() {
+                    written += letter;
+
+                    type.innerHTML = written;
+                }, delay * i);
+            });
+
+            letters.forEach(function deleteLetters(letter, i) {
+                setTimeout(function() {
+                    written = written.slice(0, -1);
+
+                    type.innerHTML = written;
+                }, ((allergy.length) + 1) * delay + (delay * i));
+            });
+        }
+
+        changeAllergy();
+    </script>
+</body>
+
+</html>
