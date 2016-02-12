@@ -108,7 +108,12 @@
 
     <script>
         setTimeout(function() {
-            document.querySelector('.header').style.backgroundImage = 'url(\'./bg.jpg\')';
+            var img = new Image();
+
+            img.src = './bg.jpg';
+            img.onload = function () {
+                document.querySelector('.header').style.backgroundImage = 'url(\'./bg.jpg\')';
+            };
         });
     </script>
 
