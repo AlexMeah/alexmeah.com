@@ -68,20 +68,22 @@
     </script>
 
     <script>
-        if (document.querySelectorAll) {
-            var paths = document.querySelectorAll('.path');
-            var len;
+        if (document.querySelectorAll && window.addEventListener) {
+            window.addEventListener('load', function () {
+                var paths = document.querySelectorAll('.path');
+                var len;
 
-            for (var i = 0; i < paths.length; i++) {
-                len = paths[i].getTotalLength();
+                for (var i = 0; i < paths.length; i++) {
+                    len = paths[i].getTotalLength();
 
-                paths[i].style.strokeDasharray = len + ' ' + len;
-                paths[i].style.strokeDashoffset = len;
+                    paths[i].style.strokeDasharray = len + ' ' + len;
+                    paths[i].style.strokeDashoffset = len;
 
-                paths[i].getBoundingClientRect();
-                paths[i].style.transition = 'stroke-dashoffset 2s linear';
-                paths[i].style.strokeDashoffset = '0';
-            }
+                    paths[i].getBoundingClientRect();
+                    paths[i].style.transition = 'stroke-dashoffset 2s linear';
+                    paths[i].style.strokeDashoffset = '0';
+                }
+            });
         }
     </script>
 </body>
