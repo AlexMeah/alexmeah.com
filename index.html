@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,11 +11,31 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
     <section class="content">
+        <div class="mark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 290 238" version="1">
+                <g style="fill-rule:evenodd;fill:none;stroke-linecap:round">
+                    <g stroke="#FFF">
+                        <path class="path" d="M170.9 95.3C170.9 95.3 253.9 57.8 275.8 72.4 297.8 86.9 275.8 134.2 255.9 134.2 235.9 134.2 165.9 115.3 165.9 115.3 165.9 115.3 185.9 125.2 185.9 158.2 185.9 191.1 160.9 234 145.4 234" style="stroke-linejoin:round;stroke-width:8"/>
+                        <path class="path" d="M119.1 95.3C119.1 95.3 36.1 57.8 14.2 72.4 -7.8 86.9 14.2 134.2 34.1 134.2 54.1 134.2 124.1 115.3 124.1 115.3 124.1 115.3 104.1 125.2 104.1 158.2 104.1 191.1 129.1 234 144.6 234" style="stroke-linejoin:round;stroke-width:8"/>
+                        <path d="M123 148C123 148 134.3 152.5 145.5 152.5 156.8 152.5 168 148 168 148" stroke-width="6"/>
+                        <path d="M126 171C126 171 136 175 146 175 156 175 166 171 166 171" stroke-width="6"/>
+                        <path d="M131 193C131 193 138.5 196 146 196 153.5 196 161 193 161 193" stroke-width="6"/>
+                        <g style="stroke-linejoin:round;stroke-width:8">
+                            <path class="path" d="M145 39C131.2 39 120 45.2 120 59 120 67.2 123.9 74.5 130 79 130 79 138.4 74.3 137.5 56 136.6 37.7 127 19 127 19L105 4"/>
+                            <path class="path" d="M145 39C158.8 39 170 45.2 170 59 170 67.2 166.1 74.5 160 79 160 79 151.6 74.3 152.5 56 153.4 37.7 163 19 163 19L185 4"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
         <h1>Alex Meah</h1>
         <h2>Full Stack Javascript Developer</h2>
+
+        <p>Currently working as Lead Developer for the web platform at LateRooms.com in Manchester. Our current stack consists of React, Redux, Webpack and Express.</p>
 
         <ul class="interests">
             <li aria-label="Sass" class="interests__interest icon-sass"></li>
@@ -27,13 +48,39 @@
     </section>
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-65302463-1', 'auto');
-      ga('send', 'pageview');
-  </script>
+        ga('create', 'UA-65302463-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script>
+        if (document.querySelectorAll) {
+            var paths = document.querySelectorAll('.path');
+            var len;
+
+            for (var i = 0; i < paths.length; i++) {
+                len = paths[i].getTotalLength();
+
+                paths[i].style.strokeDasharray = len + ' ' + len;
+                paths[i].style.strokeDashoffset = len;
+
+                paths[i].getBoundingClientRect();
+                paths[i].style.transition = 'stroke-dashoffset 2s linear';
+                paths[i].style.strokeDashoffset = '0';
+            }
+        }
+    </script>
 </body>
+
 </html>

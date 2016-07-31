@@ -8,8 +8,11 @@ html {
 }
 
 body {
+    padding: 1.4rem;
     min-height: 100%;
-    font: 14px/26px Helvetica, Helvetica Neue, Arial;
+    font-size: 14px;
+    font-family: Helvetica, Helvetica Neue, Arial;
+    line-height: 1.42;
     font-weight: 300;
     background: #3e464c;
     text-align: center;
@@ -76,6 +79,7 @@ body {
     -o-flex: 1;
     -webkit-box-flex: 1;
     flex: 1;
+    max-width: 60rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
