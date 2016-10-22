@@ -210,6 +210,8 @@ p {
     width: calc(100% - 40rem);
     padding: 10rem 4.8rem 2.4rem 2.4rem;
     padding-top: 10rem;
+    height: 100%;
+    overflow: auto;
   }
 }
 
