@@ -1,0 +1,22 @@
+.icon {
+    width: 27px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+
+    &--insta {
+        background-image: url(../img/instagram.svg);
+    }
+
+    &--email {
+        background-image: url(../img/envelope-square.svg);
+    }
+
+    &--github {
+        background-image: url(../img/github-square.svg);
+    }
+
+    &--linkedin {
+        background-image: url(../img/linkedin-square.svg);
+    }
+}

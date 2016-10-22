@@ -1,0 +1,169 @@
+@import "./angles";
+@import "./icons";
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    overflow: hidden;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 16px;
+    min-height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.46;
+    color: #333;
+    overflow: auto;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+hr {
+    border: 0;
+    width: 24rem;
+    height: .4rem;
+    background: #2ecc71;
+    text-align: left;
+    margin: 2.4rem 0 3.2rem;
+}
+
+.mark {
+    position: absolute;
+    top: 1.6rem;
+    left: 1.6rem;
+    display: none;
+
+    img {
+        vertical-align: middle;
+    }
+}
+
+.image {
+    position: relative;
+    overflow: hidden;
+    transition: background 1s ease-in;
+    background: url(../img/bg-blur.jpg);
+    background-color: #1a0e10;
+    background-size: cover;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    padding: 2.4rem;
+}
+
+.interests {
+    @extend .cf;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .mark {
+        display: block;
+    }
+
+    .image {
+        float: left;
+        width: 40rem;
+        height: 100%;
+
+        &--loaded {
+            background: url(../img/bg.jpg);
+            background-size: cover;
+        }
+
+        &__angle {
+            position: absolute;
+            top: 0;
+            left: -120rem;
+            bottom: 0;
+            background-color: #fff;
+
+            &:before {
+                background-color: inherit;
+                content: '';
+                left: 0;
+                width: 3000px;
+                pointer-events: none;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.30);
+                /* margin-right: -20px; */
+                transform: translateX(50%) skewX(10deg);
+                top: 0;
+                bottom: 0;
+            }
+        }
+
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .content {
+        float: left;
+        width: calc(100% - 40rem);
+        padding: 10rem 4.8rem 2.4rem 2.4rem;
+        padding-top: 10rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .image {
+        width: 60rem;
+
+        &__angle {
+            left: -100rem;
+        }
+    }
+
+    .content {
+        width: calc(100% - 60rem);
+    }
+}
