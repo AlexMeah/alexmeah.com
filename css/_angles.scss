@@ -1,0 +1,52 @@
+@mixin tilted($height, $angle, $color, $position: 'top', $pseudo: 'before') {
+    position: relative;
+    background-color: $color;
+
+    &::#{$pseudo} {
+        background-color: inherit;
+        content: '';
+        left: 0;
+        height: $height;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        box-shadow: 0 -5px 10px -5px rgba(0,0,0,0.19);
+        @if ($position == 'top') {
+            transform: translateY(-50%) skewY($angle);
+            top: 0;
+        }
+        @else {
+            transform: translateY(50%) skewY($angle);
+            bottom: 0;
+        }
+    }
+}
+
+@mixin tilted-vertical($width, $angle, $color, $position: 'top', $pseudo: 'before') {
+    position: relative;
+    background-color: $color;
+    overflow: hidden;
+
+    &::#{$pseudo} {
+        background-color: inherit;
+        content: '';
+        left: 0;
+        width: $width;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        box-shadow: -5px 0 10px -5px rgba(0,0,0,0.19);
+        margin-right: -20px;
+        @if ($position == 'top') {
+            transform: translateX(-50%) skewX($angle);
+            top: 0;
+            bottom: 0;
+        }
+        @else {
+            transform: translateX(50%) skewX($angle);
+            top: 0;
+            bottom: 0;
+        }
+    }
+}

@@ -12,44 +12,36 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <meta name="google-site-verification" content="CN96wXWHkLtr5dJKEnKYSloruSSvVPXmkcsrvesQG0I" />
 
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,600" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <section class="content">
-        <div class="mark">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 290 238" version="1">
-                <g style="fill-rule:evenodd;fill:none;stroke-linecap:round">
-                    <g stroke="#FFF">
-                        <path class="path" d="M170.9 95.3C170.9 95.3 253.9 57.8 275.8 72.4 297.8 86.9 275.8 134.2 255.9 134.2 235.9 134.2 165.9 115.3 165.9 115.3 165.9 115.3 185.9 125.2 185.9 158.2 185.9 191.1 160.9 234 145.4 234" style="stroke-linejoin:round;stroke-width:8"/>
-                        <path class="path" d="M119.1 95.3C119.1 95.3 36.1 57.8 14.2 72.4 -7.8 86.9 14.2 134.2 34.1 134.2 54.1 134.2 124.1 115.3 124.1 115.3 124.1 115.3 104.1 125.2 104.1 158.2 104.1 191.1 129.1 234 144.6 234" style="stroke-linejoin:round;stroke-width:8"/>
-                        <path d="M123 148C123 148 134.3 152.5 145.5 152.5 156.8 152.5 168 148 168 148" stroke-width="6"/>
-                        <path d="M126 171C126 171 136 175 146 175 156 175 166 171 166 171" stroke-width="6"/>
-                        <path d="M131 193C131 193 138.5 196 146 196 153.5 196 161 193 161 193" stroke-width="6"/>
-                        <g style="stroke-linejoin:round;stroke-width:8">
-                            <path class="path" d="M145 39C131.2 39 120 45.2 120 59 120 67.2 123.9 74.5 130 79 130 79 138.4 74.3 137.5 56 136.6 37.7 127 19 127 19L105 4"/>
-                            <path class="path" d="M145 39C158.8 39 170 45.2 170 59 170 67.2 166.1 74.5 160 79 160 79 151.6 74.3 152.5 56 153.4 37.7 163 19 163 19L185 4"/>
-                        </g>
-                    </g>
-                </g>
-            </svg>
+    <div class="cf" style="height: 100%;">
+        <div class="image">
+            <div class="image__angle"></div>
         </div>
-        <h1>Alex Meah</h1>
-        <h2>Full Stack Javascript Developer</h2>
 
-        <p>Currently working as Lead Developer for the web platform at LateRooms.com in Manchester. Our current stack consists of React, Redux, Webpack and Express.</p>
+        <div class="content">
+            <h1>Alex Meah</h1>
+            <h2>Frontend Developer</h2>
+            <hr>
 
-        <ul class="interests">
-            <li aria-label="Sass" class="interests__interest icon-sass"></li>
-            <li aria-label="Github" class="interests__interest icon-github"></li>
-            <li aria-label="React" class="interests__interest icon-react"></li>
-            <li aria-label="Node" class="interests__interest icon-node"></li>
-        </ul>
+            <p>Currently working as Lead Developer for the web platform at LateRooms.com in Manchester. Our current stack consists of React, Redux, Webpack and Express.</p>
 
-        <p>You can contact me via <strong><a href="mailto:alex.meah@gmail.com?subject=Hello">E-mail</a></strong>, check out my code on <strong><a href="https://github.com/AlexMeah">Github</a></strong>, or connect on <strong><a href="https://uk.linkedin.com/pub/alex-meah/67/655/571">LinkedIn</a></strong>.</p>
-    </section>
+            <h3>Find me on the internet</h3>
+
+            <ul class="social-links">
+                <li class="social-links__link"><a class="icon icon--github" href="https://github.com/AlexMeah">Github</a></li>
+                <li class="social-links__link"><a class="icon icon--insta" href="https://www.instagram.com/alexmeah/">Instagram</a></li>
+                <li class="social-links__link"><a class="icon icon--linkedin" href="https://uk.linkedin.com/pub/alex-meah/67/655/571">LinkedIn</a></li>
+                <li class="social-links__link"><a class="icon icon--email" href="mailto:alex.meah@gmail.com?subject=Hello">email</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mark"><img src="data:image/svg+xml,%3Csvg width='50' viewBox='0 0 200 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F8F8F8' d='M200 160H0L100 0l77 124h-66l-11-18-11 18H67l33-53 22 35h22l-44-70-66 106h155'/%3E%3C/svg%3E" alt="Logo"></div>
 
     <script>
         (function(i, s, o, g, r, a, m) {
@@ -69,23 +61,13 @@
     </script>
 
     <script>
-        if (document.querySelectorAll && window.addEventListener) {
-            window.addEventListener('load', function () {
-                var paths = document.querySelectorAll('.path');
-                var len;
+        var img = new Image();
 
-                for (var i = 0; i < paths.length; i++) {
-                    len = paths[i].getTotalLength();
+        img.onload = function () {
+            document.querySelector('.image').className += ' image--loaded';
+        };
 
-                    paths[i].style.strokeDasharray = len + ' ' + len;
-                    paths[i].style.strokeDashoffset = len;
-
-                    paths[i].getBoundingClientRect();
-                    paths[i].style.transition = 'stroke-dashoffset 2s linear';
-                    paths[i].style.strokeDashoffset = '0';
-                }
-            });
-        }
+        img.src = './img/bg.jpg';
     </script>
 </body>
 

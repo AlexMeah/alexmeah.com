@@ -1,0 +1,24 @@
+{
+  "name": "alexmeah.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-css": "node-sass --watch --output-style expanded --output ./css ./css",
+    "build-css": "node-sass --output-style expanded --output ./css ./css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMeah/alexmeah.github.io.git"
+  },
+  "author": "Alex Meah <hi@alexmeah.com> (http://alexmeah.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexMeah/alexmeah.github.io/issues"
+  },
+  "homepage": "https://github.com/AlexMeah/alexmeah.github.io#readme",
+  "devDependencies": {
+    "node-sass": "^3.10.1"
+  }
+}
