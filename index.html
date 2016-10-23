@@ -62,13 +62,29 @@
     </script>
 
     <script>
-        var img = new Image();
+        var loaded = false;
 
-        img.onload = function () {
-            document.querySelector('.image').className += ' image--loaded';
-        };
+        function loadBg(event) {
+            if (loaded || window.innerWidth < 768) {
+                return;
+            }
 
-        img.src = './img/bg.jpg';
+            var img = new Image();
+
+            img.onload = function () {
+                document.querySelector('.image').className += ' image--loaded';
+                loaded = true;
+            };
+
+            img.src = './img/bg.jpg';
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('resize', loadBg);
+            window.addEventListener('load', loadBg);
+        } else {
+            loadBg()
+        }
     </script>
 </body>
 
