@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch-css": "node-sass --watch --output-style expanded --output ./css ./css",
-    "build-css": "node-sass --output-style expanded --output ./css ./css"
+    "build-css": "node-sass --output-style compressed --output ./css ./css && csso ./css/main.css --output ./css/main.css"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AlexMeah/alexmeah.github.io#readme",
   "devDependencies": {
+    "csso": "^2.2.1",
     "node-sass": "^3.10.1"
   }
 }
