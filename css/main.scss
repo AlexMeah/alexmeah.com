@@ -2,7 +2,6 @@ $brand: #2ecc71;
 $base-font-size: 1.8rem;
 $text: #333;
 
-@import "./angles";
 @import "./icons";
 
 .cf:before,
@@ -185,21 +184,22 @@ p {
         &__angle {
             position: absolute;
             top: 0;
-            left: -120rem;
+            right: 0;
             bottom: 0;
-            background-color: #fff;
+            left: 0;
 
             &:before {
-                background-color: inherit;
                 content: '';
-                left: 0;
-                width: 3000px;
+                display: block;
+                background-color: #fff;
+                z-index: 99;
+                width: 400px;
                 pointer-events: none;
                 position: absolute;
-                right: 0;
+                right: -335px;
                 height: 100%;
-                box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.30);
-                transform: translateX(50%) skewX(10deg);
+                box-shadow: -5px 0 10px -5px rgba(0,0,0,.3);
+                transform: skewX(10deg);
                 top: 0;
                 bottom: 0;
             }
