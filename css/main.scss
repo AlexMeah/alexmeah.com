@@ -3,6 +3,7 @@ $base-font-size: 1.8rem;
 $text: #333;
 
 @import "./icons";
+@import "./btns";
 
 .cf:before,
 .cf:after {
@@ -142,7 +143,7 @@ p {
 }
 
 .social-links {
-    margin: 0;
+    margin: 0 0 $base-font-size;
     padding: 0;
     list-style: none;
 
