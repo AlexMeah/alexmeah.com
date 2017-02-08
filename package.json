@@ -20,6 +20,6 @@
   "homepage": "https://github.com/AlexMeah/alexmeah.github.io#readme",
   "devDependencies": {
     "csso": "^2.2.1",
-    "node-sass": "^3.10.1"
+    "node-sass": "^4.5.0"
   }
 }
