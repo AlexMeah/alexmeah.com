@@ -12,42 +12,39 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png?v=2">
     <meta name="google-site-verification" content="CN96wXWHkLtr5dJKEnKYSloruSSvVPXmkcsrvesQG0I" />
 
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro:300" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <div class="cf" style="height: 100%;">
-        <div class="image">
-            <div class="image__angle"></div>
-        </div>
+    <div class="content">
+        <h1>Alex Meah</h1>
+        <h2>Contract Developer</h2>
+        <hr>
 
-        <div class="content">
-            <h1>Alex Meah</h1>
-            <h2>Frontend Developer</h2>
-            <hr>
+        <p>Currently providing frontend services for <strong><a href="https://www.brighthr.com/">BrightHR</a></strong>.</p>
 
-            <p>Currently working as Lead Developer for the web platform at LateRooms.com in Manchester. Our current stack consists of React, Redux, Webpack and Express.</p>
+        <p>Previously working as Lead Developer for the web platform at LateRooms.com in Manchester utilising React, Redux, Webpack and Express.</p>
 
-            <h3>Find me on the internet</h3>
+        <h3>Find out more</h3>
 
-            <ul class="social-links">
-                <li class="social-links__link"><a class="icon icon--github" href="https://github.com/AlexMeah">Github</a></li>
-                <li class="social-links__link"><a class="icon icon--twitter" href="https://twitter.com/Alex_Meah">Twitter</a></li>
-                <li class="social-links__link"><a class="icon icon--insta" href="https://www.instagram.com/alexmeah/">Instagram</a></li>
-                <li class="social-links__link"><a class="icon icon--linkedin" href="https://uk.linkedin.com/pub/alex-meah/67/655/571">LinkedIn</a></li>
-                <li class="social-links__link"><a class="icon icon--email" href="mailto:alex.meah@gmail.com?subject=Hello">email</a></li>
-            </ul>
-        </div>
+        <ul class="social-links">
+            <li class="social-links__link"><a title="Github" class="icon icon--github" href="https://github.com/AlexMeah">Github</a></li>
+            <li class="social-links__link"><a title="Twitter" class="icon icon--twitter" href="https://twitter.com/Alex_Meah">Twitter</a></li>
+            <li class="social-links__link"><a title="Instagram" class="icon icon--insta" href="https://www.instagram.com/alexmeah/">Instagram</a></li>
+            <li class="social-links__link"><a title="LinkedIn" class="icon icon--linkedin" href="https://uk.linkedin.com/pub/alex-meah/67/655/571">LinkedIn</a></li>
+            <li class="social-links__link"><a title="Email" class="icon icon--email" href="mailto:alex.meah@gmail.com?subject=Hello">email</a></li>
+        </ul>
     </div>
 
-    <div class="mark"><img src="data:image/svg+xml,%3Csvg width='50' viewBox='0 0 200 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F8F8F8' d='M200 160H0L100 0l77 124h-66l-11-18-11 18H67l33-53 22 35h22l-44-70-66 106h155'/%3E%3C/svg%3E" alt="Logo"></div>
+    <div class="mark"><img src="data:image/svg+xml,%3Csvg width='50' viewBox='0 0 200 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F8F8F8' d='M200 160H0L100 0l77 124h-66l-11-18-11 18H67l33-53 22 35h22l-44-70-66 106h155'/%3E%3C/svg%3E"
+            alt="Logo"></div>
 
     <script>
-        (function(i, s, o, g, r, a, m) {
+        (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
+            i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
@@ -59,32 +56,6 @@
 
         ga('create', 'UA-65302463-1', 'auto');
         ga('send', 'pageview');
-    </script>
-
-    <script>
-        var loaded = false;
-
-        function loadBg(event) {
-            if (loaded || window.innerWidth < 768) {
-                return;
-            }
-
-            var img = new Image();
-
-            img.onload = function () {
-                document.querySelector('.image').className += ' image--loaded';
-                loaded = true;
-            };
-
-            img.src = './img/bg.jpg';
-        }
-
-        if (window.addEventListener) {
-            window.addEventListener('resize', loadBg);
-            window.addEventListener('load', loadBg);
-        } else {
-            loadBg()
-        }
     </script>
 </body>
 
