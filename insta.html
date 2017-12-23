@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Captions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        textarea {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <form>
+            <label>
+                <h2>Caption</h2>
+                <input id="caption" type="text" placeholder="Caption...">
+            </label>
+            <label>
+                <h2>Tags</h2>
+                <input id="tags" type="text" placeholder="Tags...">
+            </label>
+            <h2>Camera</h2>
+            <label>
+                Sony A6000
+                <input name="camera" class="camera" type="radio" value="#Sony #A6000">
+            </label>
+            <label>
+                Sony A7rii
+                <input name="camera" checked class="camera" type="radio" value="#Sony #A7rii">
+            </label>
+            <h2>Lens</h2>
+            <label>
+                35mm
+                <input name="lens" class="lens" type="radio" value="#35mm">
+            </label>
+            <label>
+                50mm
+                <input name="lens" checked class="lens" type="radio" value="#50mm">
+            </label>
+            <label>
+                19mm
+                <input name="lens" class="lens" type="radio" value="#19mm">
+            </label>
+            <h2>Niche</h2>
+            <label>
+                Street
+                <input name="niche" checked class="niche" type="radio" value="street">
+            </label>
+            <label>
+                Travel
+                <input name="niche" class="niche" type="radio" value="travel">
+            </label>
+            <br>
+            <br>
+            <div>
+                <button>Generate</button>
+            </div>
+        </form>
+        <br>
+        <br>
+        <textarea id="result"></textarea>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script>
+        var streetTags = [
+            "#rtephotography",
+            "#aov",
+            "#heatercentral",
+            "#vscogood",
+            "#tumblr",
+            "#artofvisuals",
+            "#agameoftones",
+            "#justgoshoot",
+            "#way2ill",
+            "#shoot2kill",
+            "#goldenvisuals",
+            "#vsco",
+            "#vscocam",
+            "#createexplore",
+            "#hbweekends",
+            "#hboutthere",
+            "#miestershots",
+            "#moodygrams",
+            "#twgrammers",
+            "#visualsoflife",
+            "#visualauthority",
+            "#spicollective",
+            "#streetphotography",
+            "#ig_streetphotography",
+            "#ig_street",
+            "#street_photography",
+            "#streetphotographer",
+            "#streetphotographers",
+            "#street_photographer",
+            "#streetphoto",
+            "#streetphotos",
+            "#streetphotografy",
+            "#magnumphotos",
+            "#instagram",
+            "#burnmagazine",
+            "#lensculturestreets",
+            "#lensculture",
+            "#myfeatureshoot",
+            "#featureshoot",
+            "#transfer_visions",
+            "#candid",
+            "#instamagazine",
+            "#killtheunderground",
+            "#streetdreamsmag",
+            "#fragmentmag",
+            "#thecoolmagazine",
+            "#streetlife_awards",
+            "#beststreets",
+            "#whpmakebelieve",
+            "#depthobsessed",
+            "#trappingtones",
+            "#streets_vision",
+            "#reco_ig",
+            "#estheticlabel",
+            "#beautifuldestinations",
+            "#yngkillers",
+            "#citykillerz",
+            "#houseoftones",
+            "#shotzdelight",
+            "#huntgram",
+            "#igmasters",
+            "#urbanaisle",
+            "#creative_optic",
+            "#streetmagazine",
+            "#citygrammers",
+            "#visualambassadors",
+            "#freezfram",
+            "#gramslayers",
+            "#sdmtravels",
+            "#instameethk",
+            "#imaginatones",
+            "#agameof10k",
+            "#pushingthelens",
+            "#contest",
+            "#facelessnewyorkers",
+            "#bettermatters",
+            "#whpmyeveryday",
+            "#alphacollective",
+            "#sonyalpha",
+            "#documentaryphotography",
+            "#ourstreets",
+            "#juxtaposition",
+            "#higbeetakeover",
+            "#photostreet",
+            "#decisivemoment",
+            "#fineartphotography",
+            "#streetshot",
+            "#life_is_street",
+            "#thestreetphotographyhub",
+            "#streets_storytelling",
+            "#capturestreets",
+            "#blackandwhiteonly",
+            "#ig_photostars",
+            "#digitalphotography",
+            "#friendsinperson",
+            "#lenculturestreets",
+            "#spi_transport",
+        ];
+
+        var travelTags = [
+            '#travel',
+            '#traveling',
+            '#travelers',
+            '#traveler',
+            '#explore',
+            '#exploring',
+            '#explorer',
+            '#wander',
+            '#wanderer',
+            '#wanderlust',
+            '#natgeotravel',
+            '#natgeoyourshot',
+            '#forbestravelguide',
+            '#bbctravel',
+            '#guardiantravelsnaps',
+            '#passionpassport',
+            '#travelstoke',
+            '#beautifuldestinations',
+            '#bestintravel',
+            '#girlswhoexplore',
+            '#awesomeearth',
+            '#awesupply',
+            '#theglobewanderer',
+            '#lonelyplanet',
+            '#traveldeeper',
+            '#travelstoke',
+            '#abmtravelbug',
+            '#worlderlust',
+            '#travelawesome',
+            '#exploringtheglobe',
+            '#cntraveler',
+            '#traveldames'
+        ];
+
+        function getTags(count) {
+            const niche = Array.from(document.querySelectorAll('.niche')).find(e => e.checked).value;
+
+            if (niche === 'street') {
+                return [..._.sampleSize(streetTags, count - 2), '#streetleaks', '#streetclassics'];
+            }
+
+            if (niche === 'travel') {
+                return [..._.sampleSize(travelTags, count - 1), '#passionpassport'];
+            }
+
+            return _.sampleSize(streetTags, count);
+        }
+
+        function getCustomTags() {
+            const tags = document.querySelector('#tags').value
+
+            return tags.trim().length ? tags.split(', ').map(v => `#${v}`) : [];
+        }
+
+        function getUsers() {
+            const niche = Array.from(document.querySelectorAll('.niche')).find(e => e.checked).value;
+
+            if (niche === 'street') {
+                return ['@StreetLeaks', '@WeAreTheStreet', '@StreetPhotographers', '@StreetDreamsMag', '@LensCulture',
+                    '@EyeEmPhoto'
+                ]
+            }
+
+            return ['@DISCOVEREARTH', '@BESTVACATIONS', '@PASSIONPASSPORT']
+        }
+
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            document.querySelector('#result').innerHTML =
+                `
+${document.querySelector('#caption').value} - Shot on: ${Array.from(document.querySelectorAll('.camera')).find(e => e.checked).value} - ${Array.from(document.querySelectorAll('.lens')).find(e => e.checked).value}⠀⠀⠀⠀⠀⠀⠀⠀⠀
+.
+.
+.
+.
+.
+${getCustomTags().join(' ')}\n⠀⠀⠀⠀⠀⠀⠀⠀⠀
+————————————————————\n⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${getTags(27 - getCustomTags().length).join(' ')}\n⠀⠀⠀⠀⠀⠀⠀⠀⠀
+————————————————————\n⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${getUsers().join(' ')}\n⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            `
+                .trim()
+        })
+    </script>
+</body>
+
+</html>
