@@ -146,6 +146,25 @@ p {
     }
 }
 
+.projects {
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style-type: none;
+
+    &__title {
+        margin-top: 3rem;
+    }
+
+    h3 {
+        margin: 0 0 0;
+    }
+
+    p {
+        margin-top: .5rem;
+        line-height: 1.44;
+    }
+}
+
 @media (min-width: 768px) {
     body {
         padding: $base-font-size * 5;
@@ -154,5 +173,5 @@ p {
 }
 
 @media (min-width: 1200px) {
-    
+
 }
