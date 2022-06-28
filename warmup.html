@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warmup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        border: 1rem solid #fbbf24;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        place-content: center;
+
+        text-align: center;
+        flex-direction: column;
+        color: #101823;
+      }
+
+
+      #content {
+        font-size: 32px;
+        font-weight: bold;
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div id="content"></div>
+
+
+    <script type="module">
+      import { html, render, useState, useLayoutEffect, useRef, useEffect} from 'https://unpkg.com/htm/preact/standalone.module.js'
+
+      const steps = [
+        { name: "Prepare", time: 5 },
+        { name: "Alternating High Kicks", time: 30 },
+        { name: "Alternating Toe Touches", time: 30 },
+        { name: "Alternating Knee Tucks", time: 30 },
+        { name: "Alternating Hip Turnouts", time: 30 },
+        { name: "Alternating Lunge With Twist", time: 30 },
+        { name: "Rising Torso Twist", time: 30 },
+        { name: "Back Slaps", time: 30 },
+        { name: "Forward Arms Circles", time: 15 },
+        { name: "Backward Arm Circles", time: 15 },
+        { name: " Butt Kicks", time: 15 },
+        { name: " High Knees", time: 15 },
+        { name: " Jumping Jacks", time: 15 },
+        { name: " Burpees", time: 15 },
+      ];
+
+
+      const content = document.querySelector("#content");
+
+      let timer;
+
+      function Timer({time}) {
+        const [remaining, setRemaining] = useState(time);
+        const ref = useRef();
+        useLayoutEffect(() => {
+          ref.current = setInterval(() => {
+            setRemaining(n => n - 1);
+          }, 1000);
+
+          return () => clearInterval(ref.current);
+        }, []);
+
+        useEffect(() => {
+          if (remaining === 0) clearInterval(ref.current)
+        }, [remaining])
+
+        return remaining ? remaining : 'Get Ready'
+      }
+
+      function App (props) {
+        const [play, setPlay] = useState(false);
+        const [currentIndex, setIndex] = useState(0);
+        const currentStep = steps[currentIndex];
+
+        useLayoutEffect(() => {
+          if (!play) return;
+
+          clearInterval(timer)
+
+          timer = setTimeout(() => {
+            setIndex(i => i + 1)
+          }, currentStep.time * 1000);
+
+        }, [currentIndex, play])
+
+        return play ?
+          html`<div>
+            <h1>${currentStep.name}</h1>
+
+            <p><${Timer} key=${currentStep.name} time=${currentStep.time}/></p>
+          </div>` :
+          html`<button onClick=${() => setPlay(true)}>Start!</button>`;
+      }
+
+      render(html`<${App} name="World" />`, content);
+    </script>
+  </body>
+</html>
